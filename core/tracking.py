@@ -125,10 +125,10 @@ class image_saver():
         ans = torch.zeros((masks.shape[0], 3, masks.shape[2], masks.shape[3]))
         for i in range(masks.shape[0]):
             max_mask = np.argmax(masks[i].cpu().detach().numpy(), axis=0)
-            im = Image.fromarray(max_mask.astype(np.uint8)).convert("P")
-            im.putpalette(PALETTE)
-            im = im.convert("RGB")
-            ans[i] = torch.Tensor(np.array(im)).permute(2, 0, 1)
+            im = Image.fromarray(max_mask.astype(np.uint8)) #.convert("P")
+            # im.putpalette(PALETTE)
+            # im = im.convert("RGB")
+            ans[i] = torch.Tensor(np.array(im)) #.permute(2, 0, 1)
         return ans
 
 
